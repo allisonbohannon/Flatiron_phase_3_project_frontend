@@ -1,8 +1,11 @@
 import React from 'react'
+import AddNewForm from './AddNewForm'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>Home
+      <AddNewForm />
+    </div>
   )
 }
 
