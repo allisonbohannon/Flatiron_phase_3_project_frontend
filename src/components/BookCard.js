@@ -1,8 +1,12 @@
 import React from 'react'
 
-const BookCard = () => {
+const BookCard = (book) => {
   return (
-    <div>BookCard</div>
+    <div>
+        book.title
+        book.author
+        book.genre
+    </div>
   )
 }
 
