@@ -1,7 +1,7 @@
 import React from 'react'
 
-const DisplayList = () => {
-    
+const DisplayList = (bookList) => {
+
   return (
     <div>DisplayList</div>
   )
