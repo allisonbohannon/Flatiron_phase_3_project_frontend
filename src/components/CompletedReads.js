@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CompletedReads = (bookList) => {
+const CompletedReads = ({bookList}) => {
   return (
     <div>CompletedReads</div>
   )

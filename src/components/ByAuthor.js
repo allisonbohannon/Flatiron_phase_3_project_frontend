@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ByAuthor = (bookList) => {
+const ByAuthor = ({bookList}) => {
   return (
     <div>ByAuthor</div>
   )

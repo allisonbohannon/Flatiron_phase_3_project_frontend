@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ByGenre = (bookList) => {
+const ByGenre = ({bookList}) => {
   return (
     <div>ByGenre</div>
   )

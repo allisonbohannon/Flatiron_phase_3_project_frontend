@@ -7,13 +7,20 @@ import CompletedReads from "./CompletedReads"
 import Home from "./Home"
 
 const sampleData = [
-    {title: "book1", author: "author1", genre: "genre1"},
-    {title: "book2", author: "author2", genre: "genre2"},
-    {title: "book3", author: "author3", genre: "genre3"}]
+    {title: "book1", author: "author1", genre: "genre1", id: 1},
+    {title: "book2", author: "author2", genre: "genre2", id: 2},
+    {title: "book3", author: "author3", genre: "genre3", id: 3}]
 
 function App() {
 
-    const [ bookList, setBookList ] = useState(sampleData)
+    const [ bookList, setBookList ] = useState([])
+
+    useEffect(() => {
+        fetch("http://localhost:9292/books")
+          .then((r) => r.json())
+          .then((bookList) => setBookList(bookList));
+      }, []);
+    
 
     return (
         <div>
