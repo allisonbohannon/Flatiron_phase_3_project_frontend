@@ -6,7 +6,7 @@ const Home = ( {bookList} ) => {
 
 
   return (
-    <div>Home
+    <div>
       <AddNewForm />
       <DisplayList bookList = {bookList}/>
     </div>
