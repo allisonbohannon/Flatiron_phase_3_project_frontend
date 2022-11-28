@@ -7,10 +7,10 @@ import Button from "react-bootstrap/Button";
 const AddNewForm = ({handleAdd}) => {
 
     const [formData, setFormData] = useState({
-        title:"",
-        author_first_name:"",
-        author_last_name:"",
-        genre:""
+        title: "",
+        author_first_name: "",
+        author_last_name: "",
+        genre: ""
     })
 
     function handleChange(e) {
@@ -29,10 +29,11 @@ const AddNewForm = ({handleAdd}) => {
             first_name: formData.author_first_name,
             last_name: formData.author_first_name,
             genre: formData.genre,
+            read_status: 0
         }
         fetch("http://localhost:9292/books", { method: "POST", 
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newRecipeObj)
+        body: JSON.stringify(newBookObj)
         })
         .then(response => response.json())
         .then(data => handleAdd(data))
@@ -55,12 +56,20 @@ const AddNewForm = ({handleAdd}) => {
                 value={formData.title}>
         </Form.Control> 
                 <br></br>
-        <Form.Control type="text" 
-                name="author" 
-                placeholder="author" 
-                onChange={handleChange} 
-                value={formData.author}>
-        </Form.Control> 
+        <span className='d-flex justify-content-around'>
+            <Form.Control type="text" 
+                    name="author_first_name" 
+                    placeholder="author first name" 
+                    onChange={handleChange} 
+                    value={formData.author_first_name}>
+            </Form.Control> 
+            <Form.Control type="text" 
+                    name="author_last_name" 
+                    placeholder="author last name" 
+                    onChange={handleChange} 
+                    value={formData.author_last_name}>
+            </Form.Control> 
+        </span>
                 <br></br>
         <Form.Control type="text" 
                 name="genre" 

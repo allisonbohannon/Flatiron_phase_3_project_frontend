@@ -2,10 +2,31 @@ import React from 'react'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
-const BookCard = ({book}) => {
+const BookCard = ({book, handleDelete, handleUpdate}) => {
 
-  function handleUpdate() {}
-  function handleDelete() {}
+
+
+  function handleUpdate() {
+
+    const newBookObj = {...book, read_status: 1}
+
+    fetch(`http://localhost:9292/books/${book.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newBookObj)
+    })
+    .then(response => response.json())
+    .then(handleUpdate(newBookObj))
+    
+  }
+  function handleDelete() {
+
+    fetch(`http://localhost:9292/books/${book.id}`, {
+      method: "DELETE"
+    })
+    .then(response => response.json())
+    .then(handleDelete(book.id))
+  }
 
     
   return (

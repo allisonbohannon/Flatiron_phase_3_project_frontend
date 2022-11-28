@@ -38,6 +38,7 @@ function App() {
     }
 
     function onDelete(id) {
+        console.log("its me, i'm the problem")
         const updatedBookList= bookList.filter(book => {
             return (book.id !== id)
           })
