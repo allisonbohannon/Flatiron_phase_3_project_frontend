@@ -20,7 +20,29 @@ function App() {
           .then((r) => r.json())
           .then((bookList) => setBookList(bookList));
       }, []);
+
     
+    function onAdd(obj) {
+        setBookList([...bookList, obj])
+    }
+
+    function onUpdate(newBook) {
+        const updatedBookList= bookList.map(book => {
+            if (book.id === newBook.id) { 
+              return newBook
+            } else {
+              return book}
+            }
+          )
+          setBookList(updatedBookList)
+    }
+
+    function onDelete(id) {
+        const updatedBookList= bookList.filter(book => {
+            return (book.id !== id)
+          })
+          setBookList(updatedBookList)
+    }
 
     return (
         <div>
@@ -34,9 +56,14 @@ function App() {
                 />} />
                 <Route path="/completed_reads" element={<CompletedReads
                     bookList={bookList}
+                    handleUpdate={onUpdate}
+                    handleDelete={onDelete}
                 />} />
                 <Route path="/" element={<Home
                     bookList={bookList}
+                    handleAdd={onAdd}
+                    handleUpdate={onUpdate}
+                    handleDelete={onDelete}
                 />} />
             </Routes>
         </div>

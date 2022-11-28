@@ -4,11 +4,12 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 
-const AddNewForm = () => {
+const AddNewForm = ({handleAdd}) => {
 
     const [formData, setFormData] = useState({
         title:"",
-        author:"",
+        author_first_name:"",
+        author_last_name:"",
         genre:""
     })
 
@@ -24,16 +25,17 @@ const AddNewForm = () => {
     function handleSubmit(e) {
         e.preventDefault(); 
         const newBookObj= {
-            title:formData.title,
-            author:formData.author,
-            genre:formData.genre,
+            title: formData.title,
+            first_name: formData.author_first_name,
+            last_name: formData.author_first_name,
+            genre: formData.genre,
         }
-        // fetch(`${process.env.REACT_APP_API_URL}/recipes`, { method: "POST", 
-        // headers: { "Content-Type": "application/json" },
-        // body: JSON.stringify(newRecipeObj)
-        // })
-        // .then(response => response.json())
-        // .then(data => handleAdd(data))
+        fetch("http://localhost:9292/books", { method: "POST", 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newRecipeObj)
+        })
+        .then(response => response.json())
+        .then(data => handleAdd(data))
 
       setFormData({
         title:"",

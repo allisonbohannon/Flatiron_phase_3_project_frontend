@@ -2,12 +2,12 @@ import React from 'react'
 import AddNewForm from './AddNewForm'
 import DisplayList from './DisplayList'
 
-const Home = ( {bookList} ) => {
+const Home = ( {bookList, handleAdd} ) => {
 
 
   return (
     <div>
-      <AddNewForm />
+      <AddNewForm handleAdd={handleAdd}/>
       <DisplayList bookList = {bookList}/>
     </div>
   )
