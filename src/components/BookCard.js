@@ -4,11 +4,10 @@ import Button from 'react-bootstrap/Button';
 
 const BookCard = ({book, handleDelete, handleUpdate}) => {
 
+  function onUpdate() {
 
-
-  function handleUpdate() {
-
-    const newBookObj = {...book, read_status: 1}
+    
+    const newBookObj = {...book, read_status: !book.read_status}
 
     fetch(`http://localhost:9292/books/${book.id}`, {
       method: "PATCH",
@@ -19,12 +18,11 @@ const BookCard = ({book, handleDelete, handleUpdate}) => {
     .then(handleUpdate(newBookObj))
     
   }
-  function handleDelete() {
+  function onDelete() {
 
     fetch(`http://localhost:9292/books/${book.id}`, {
       method: "DELETE"
     })
-    .then(response => response.json())
     .then(handleDelete(book.id))
   }
 
@@ -38,8 +36,8 @@ const BookCard = ({book, handleDelete, handleUpdate}) => {
         <Card.Subtitle style={{fontStyle: 'italic'}}>{book.genre.genre}</Card.Subtitle>
       </Card.Body> 
       <span className='d-flex justify-content-around'>
-        <Button onClick={handleUpdate}>{book.read_status? "Mark as Unread" : "Mark as Read"}</Button>
-        <Button onClick={handleDelete}>Delete</Button>
+        <Button onClick={onUpdate}>{book.read_status? "Mark as Unread" : "Mark as Read"}</Button>
+        <Button onClick={onDelete}>Delete</Button>
       </span>
     </Card>
   )

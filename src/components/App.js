@@ -6,11 +6,6 @@ import ByGenre from "./ByGenre"
 import CompletedReads from "./CompletedReads"
 import Home from "./Home"
 
-const sampleData = [
-    {title: "book1", author: "author1", genre: "genre1", id: 1},
-    {title: "book2", author: "author2", genre: "genre2", id: 2},
-    {title: "book3", author: "author3", genre: "genre3", id: 3}]
-
 function App() {
 
     const [ bookList, setBookList ] = useState([])
@@ -38,7 +33,7 @@ function App() {
     }
 
     function onDelete(id) {
-        console.log("its me, i'm the problem")
+        
         const updatedBookList= bookList.filter(book => {
             return (book.id !== id)
           })
@@ -49,13 +44,13 @@ function App() {
         <div>
             <NavigationBar/>
             <Routes>
-                <Route path="/search_by_author" element={<ByAuthor 
+            
+                <Route path="/read" element={<CompletedReads
                     bookList={bookList}
+                    handleUpdate={onUpdate}
+                    handleDelete={onDelete}
                 />} />
-                <Route path="/search_by_genre" element={<ByGenre 
-                    bookList={bookList}
-                />} />
-                <Route path="/completed_reads" element={<CompletedReads
+                 <Route path="/unread" element={<CompletedReads
                     bookList={bookList}
                     handleUpdate={onUpdate}
                     handleDelete={onDelete}

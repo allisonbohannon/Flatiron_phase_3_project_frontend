@@ -1,8 +1,10 @@
 import React from 'react'
+import DisplayList from './DisplayList'
 
-const CompletedReads = ({bookList}) => {
+const CompletedReads = ({bookList, handleDelete, handleUpdate}) => {
+  
   return (
-    <div>CompletedReads</div>
+    <DisplayList bookList = {bookList} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
   )
 }
 

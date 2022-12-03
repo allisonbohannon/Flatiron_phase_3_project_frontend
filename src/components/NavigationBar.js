@@ -19,28 +19,19 @@ const NavigationBar = () => {
       <Nav.Item>
         <Nav.Link
           as={Link}
-          to="/search_by_author"
-          eventKey="search_by_author"
-        >
-          Search By Author
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link
-          as={Link}
-          to="/search_by_genre"
-          eventKey="search_by_genre"
-        >
-          Seach by Genre
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link
-          as={Link}
-          to="/completed_reads"
+          to="/read"
           eventKey="completed_reads"
         >
           Completed Reads
+        </Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link
+          as={Link}
+          to="/unread"
+          eventKey="unreads"
+        >
+          Need to Read
         </Nav.Link>
       </Nav.Item>
   </Nav>
