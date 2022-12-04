@@ -1,17 +1,24 @@
 import React from 'react'
 import BookCard from './BookCard';
-import { useLocation, useNavigate } from 'react-router';
+import { useLocation } from 'react-router';
 
-
-const DisplayList = ({bookList, handleDelete, handleUpdate}) => {
+const DisplayList = ({bookList, handleDelete, handleUpdate, filterType}) => {
 
   const location = useLocation().pathname
-
-  const filterType = location.slice(1)
   
   const displayBooks = bookList
   .filter(book => {
-    return book.status == filterType
+    if (location === "/unread") {
+      if (book.read_status === false) {
+        console.log(book)
+        return book
+      }
+    } else if (location === "/read") {
+      if (book.read_status === true) {
+        console.log(book)
+        return book
+      }
+    }
   })
   .map(book => { return <BookCard key={book.id} book={book} handleDelete={handleDelete} handleUpdate={handleUpdate}/>});
 

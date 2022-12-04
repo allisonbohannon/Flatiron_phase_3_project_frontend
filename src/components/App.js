@@ -1,14 +1,13 @@
 import React, {useState, useEffect} from "react";
 import { Route, Routes} from "react-router";
 import  NavigationBar  from "./NavigationBar"
-import ByAuthor from "./ByAuthor"
-import ByGenre from "./ByGenre"
 import CompletedReads from "./CompletedReads"
 import Home from "./Home"
 
 function App() {
 
     const [ bookList, setBookList ] = useState([])
+    const [ filterType, setFilterType ] = useState(null)
 
     useEffect(() => {
         fetch("http://localhost:9292/books")

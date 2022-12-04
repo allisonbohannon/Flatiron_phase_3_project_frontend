@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 const BookCard = ({book, handleDelete, handleUpdate}) => {
 
   function onUpdate() {
-
     
     const newBookObj = {...book, read_status: !book.read_status}
 
