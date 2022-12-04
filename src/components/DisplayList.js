@@ -10,12 +10,10 @@ const DisplayList = ({bookList, handleDelete, handleUpdate, filterType}) => {
   .filter(book => {
     if (location === "/unread") {
       if (book.read_status === false) {
-        console.log(book)
         return book
       }
     } else if (location === "/read") {
       if (book.read_status === true) {
-        console.log(book)
         return book
       }
     }
